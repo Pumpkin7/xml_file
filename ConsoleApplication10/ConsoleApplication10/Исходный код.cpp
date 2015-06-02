@@ -22,7 +22,7 @@ int main()
 { 
     setlocale(LC_ALL, "Russian");
 	std::string L;
-	std::cout<<"Ââåäèòå àäðåñ:";
+	std::cout<<"Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ:";
 	std::cin>>L;
     fs::path directory_path(L);
 	
@@ -30,21 +30,17 @@ int main()
     all_files(directory_path, files);
 	ptree pt;
 	ptree way;
-
-    std::cout<<"Âñå ôàéëû â äèðåêòîðèè "<<directory_path<<" (âêëþ÷àÿ ïîääèðåêòîðèè) íàõîäÿòñÿ â:\n\n";
+    std::cout<<"Ð’ÑÐµ Ñ„Ð°Ð¹Ð»Ñ‹ Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ð¸ "<<directory_path<<"ÐÐ°Ñ…Ð¾Ð´ÑÑ‚ÑÑ Ð²:\n\n";
     for (const auto& file : files) {
 	auto&a=file.filename();
 	auto&b=complete(file).string();
 	uintmax_t file_size(const path& file);
-	
 	auto settings = boost::property_tree::xml_writer_make_settings<std::string>('\t', 1);
 	way.put("name",a);
 	way.put("adress",b);
 	way.put("size",file_size(file));
 	pt.push_back(make_pair("file", way));
 	}
-
-	
 	auto settings = boost::property_tree::xml_writer_make_settings<std::string>('\t', 1);
 	std::ofstream f("files of directory.xml");
 	write_xml(f, pt, settings);
