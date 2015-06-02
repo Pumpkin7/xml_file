@@ -1,7 +1,6 @@
 #include <vector>
 #include <boost/filesystem.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/xml_parser.hpp>
  #include <iostream>
 using boost::property_tree::xml_writer_settings;
 namespace fs =boost::filesystem;
